@@ -11,7 +11,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var presenter: Presenter
+    lateinit var presenter: PresenterInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             .build()
             .injectMainActivity(this)
 
-        presenter.showToast = {
+        (presenter as Presenter).showToast = {
             Toast.makeText(this, "Button was clicked!", Toast.LENGTH_SHORT).show()
         }
 

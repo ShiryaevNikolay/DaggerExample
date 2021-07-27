@@ -2,6 +2,7 @@ package com.example.daggerapp.di.activity
 
 import android.app.Application
 import com.example.daggerapp.Presenter
+import com.example.daggerapp.PresenterInterface
 import com.example.daggerapp.di.scopes.PerActivity
 import dagger.Module
 import dagger.Provides
@@ -11,5 +12,5 @@ class ActivityModule {
 
     @PerActivity
     @Provides
-    fun providePresenter(app: Application) = Presenter(app)
+    fun providePresenter(app: Application): PresenterInterface = Presenter(app)
 }

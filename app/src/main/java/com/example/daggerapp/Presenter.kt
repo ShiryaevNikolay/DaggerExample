@@ -5,14 +5,13 @@ import com.example.daggerapp.di.scopes.PerActivity
 import com.example.daggerapp.di.scopes.PerApplication
 import javax.inject.Inject
 
-@PerApplication
 class Presenter constructor(
     private val app: Application
-) {
+) : PresenterInterface {
 
     var showToast: (() -> Unit)? = null
 
-    fun clickBtn() {
+    override fun clickBtn() {
         showToast?.invoke()
     }
 }
