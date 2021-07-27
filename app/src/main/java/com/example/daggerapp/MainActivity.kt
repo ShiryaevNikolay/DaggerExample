@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
             .build()
             .injectMainActivity(this)
 
-        (presenter as Presenter).showToast = {
-            Toast.makeText(this, "Button was clicked!", Toast.LENGTH_SHORT).show()
+        (presenter as Presenter).showToast = { value ->
+            Toast.makeText(this, "$value", Toast.LENGTH_SHORT).show()
         }
 
         findViewById<Button>(R.id.button_btn).setOnClickListener {
