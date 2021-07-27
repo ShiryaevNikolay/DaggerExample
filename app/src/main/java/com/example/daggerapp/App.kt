@@ -2,11 +2,11 @@ package com.example.daggerapp
 
 import android.app.Application
 import com.example.daggerapp.di.app.DaggerAppComponent
-import com.example.daggerapp.di.app.Module
+import com.example.daggerapp.di.app.AppModule
 
 class App : Application() {
 
     val appComponent = DaggerAppComponent.builder()
-        .module(Module(this))
+        .appModule(AppModule(this))
         .build()
 }

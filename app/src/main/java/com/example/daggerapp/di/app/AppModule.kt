@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class Module(private val app: Application) {
+class AppModule(private val app: Application) {
 
     @PerApplication
     @Provides

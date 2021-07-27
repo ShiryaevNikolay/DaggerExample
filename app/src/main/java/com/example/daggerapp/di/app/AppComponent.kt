@@ -1,12 +1,12 @@
 package com.example.daggerapp.di.app
 
-import com.example.daggerapp.MainActivity
+import android.app.Application
 import com.example.daggerapp.di.scopes.PerApplication
 import dagger.Component
 
 @PerApplication
-@Component(modules = [Module::class])
+@Component(modules = [AppModule::class])
 interface AppComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun application(): Application
 }
