@@ -6,9 +6,12 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
+import com.example.daggerapp.di.scopes.PerActivity
 import com.example.daggerapp.domain.ImageData
+import javax.inject.Inject
 
-class Presenter constructor(
+@PerActivity
+class Presenter @Inject constructor(
     private val app: Application
 ) : PresenterInterface {
 
@@ -60,6 +63,35 @@ class Presenter constructor(
                 imagesList += ImageData(photoUri, name, size)
             }
         }
+
+//        val images = ArrayList<String>()
+//        val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+//        val projection = arrayOf(MediaStore.MediaColumns.DATA,
+//            MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+//            MediaStore.Images.Media.WIDTH,
+//            MediaStore.Images.Media.HEIGHT)
+//
+//        app.contentResolver
+//            .query(uri,
+//                projection,
+//                null,
+//                null,
+//                MediaStore.MediaColumns.DATE_ADDED + " DESC")
+//            ?.apply {
+//                val columnIndexData = getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
+//                val columnIndexWidth = getColumnIndex(MediaStore.MediaColumns.WIDTH)
+//                val columnIndexHeight = getColumnIndex(MediaStore.MediaColumns.HEIGHT)
+//                while (moveToNext()) {
+//                    val width = getInt(columnIndexWidth)
+//                    val height = getInt(columnIndexHeight)
+//                    //не добавляем некорректные изображения
+//                    if (width > 0 && height > 0) {
+//                        val absolutePathOfImage = getString(columnIndexData)
+//                        images.add(absolutePathOfImage)
+//                    }
+//                }
+//                close()
+//            }
 
         showToast?.invoke(imagesList.count())
     }
